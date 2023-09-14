@@ -31,8 +31,8 @@ import {
   PieChartOutlined,
 } from '@mui/icons-material';
 import profileImage from 'assets/img/profile.jpg';
-import { useLocation, useNavigate } from 'react-router-dom';
-import FlexBetween from '../FlexBetween';
+import { Link, redirect, useLocation, useMatch, useNavigate } from 'react-router-dom';
+import FlexBetween from 'components/FlexBetween';
 
 const navItems = [
   {
@@ -64,7 +64,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: 'Geography',
+    text: 'Geographys',
     icon: <PublicOutlined />,
   },
   {
@@ -102,11 +102,12 @@ function Sidebar({ drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile }) 
   const [active, setActive] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
-
+  const match = useMatch('/admin/*');
+  // console.log('🚀 ~ file: index.jsx:106 ~ Sidebar ~ match:', match);
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
-
+  console.log('🚀 ~ file: index.jsx:109 ~ Sidebar ~ pathname:', pathname.substring(1).split('/'));
   return (
     <Box component="nav">
       {isSidebarOpen && (
@@ -156,6 +157,7 @@ function Sidebar({ drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile }) 
                     <ListItemButton
                       onClick={() => {
                         navigate(`/${lcText}`);
+                        // redirect(`/${lcText}`);
                         setActive(lcText);
                       }}
                       sx={{

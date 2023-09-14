@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   mode: 'dark',
+  isLogin: true,
 };
 
 export const globalSlice = createSlice({
@@ -11,8 +12,12 @@ export const globalSlice = createSlice({
     setMode: (state) => {
       state.mode = state.mode === 'light' ? 'dark' : 'light';
     },
+    setLogin: (state) => {
+      state.isLogin = !state.isLogin;
+      console.log('check islogin', state.isLogin);
+    },
   },
 });
 
-export const { setMode } = globalSlice.actions;
+export const { setMode, setLogin } = globalSlice.actions;
 export default globalSlice.reducer;

@@ -8,7 +8,7 @@ import {
   SettingsOutlined,
   ArrowDropDownOutlined,
 } from '@mui/icons-material';
-import FlexBetween from 'admin/components/FlexBetween';
+import FlexBetween from 'components/FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from 'state/globalSlice';
 import profile from 'assets/img/profile.jpg';
