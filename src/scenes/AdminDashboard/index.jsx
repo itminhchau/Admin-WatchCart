@@ -1,17 +1,13 @@
+import TestMaterialUi from 'scenes/TestMaterialUi';
 
-
-AdminDashboard.propTypes = {
-
-};
+AdminDashboard.propTypes = {};
 
 function AdminDashboard(props) {
-
-
-    return (
-        <div>
-            AdminDashboard
-        </div>
-    );
+  return (
+    <div>
+      <TestMaterialUi />
+    </div>
+  );
 }
 
 export default AdminDashboard;

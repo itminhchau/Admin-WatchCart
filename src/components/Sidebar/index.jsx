@@ -102,12 +102,11 @@ function Sidebar({ drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile }) 
   const [active, setActive] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
-  const match = useMatch('/admin/*');
-  // console.log('🚀 ~ file: index.jsx:106 ~ Sidebar ~ match:', match);
+
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
-  console.log('🚀 ~ file: index.jsx:109 ~ Sidebar ~ pathname:', pathname.substring(1).split('/'));
+
   return (
     <Box component="nav">
       {isSidebarOpen && (

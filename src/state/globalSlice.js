@@ -14,7 +14,6 @@ export const globalSlice = createSlice({
     },
     setLogin: (state) => {
       state.isLogin = !state.isLogin;
-      console.log('check islogin', state.isLogin);
     },
   },
 });

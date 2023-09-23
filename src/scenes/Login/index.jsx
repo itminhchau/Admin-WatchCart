@@ -13,7 +13,6 @@ function Login(props) {
 
   const handleLogin = () => {
     dispatch(setLogin());
-    console.log('🚀 ~ file: index.jsx:13 ~ Login ~ location:', location);
     if (location.state?.from) {
       navigate(location.state.from);
     }

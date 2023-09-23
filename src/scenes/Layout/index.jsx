@@ -10,7 +10,6 @@ function Layout(props) {
   const isNonMobile = useMediaQuery('(min-width: 600px)');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const location = useLocation();
-  console.log('location:', location);
   return (
     <Box display={isNonMobile ? 'flex' : 'block'} width="100%" height="100%">
       <Sidebar
@@ -19,7 +18,7 @@ function Layout(props) {
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
-      <Box>
+      <Box flexGrow={1}>
         <NavBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
         <Outlet />
