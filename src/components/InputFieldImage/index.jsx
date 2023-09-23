@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Controller } from 'react-hook-form';
 import { Button, TextField } from '@mui/material';
 import { toBase64 } from 'constants/convertBase64';
+import { useEffect, useState } from 'react';
+import { Controller } from 'react-hook-form';
 
 InputFieldImage.propTypes = {};
 
@@ -32,7 +31,7 @@ function InputFieldImage({ name, label, form, checkReset }) {
               {...field}
               type="file"
               accept="image/*"
-              style={{ display: 'none' }}
+              style={{ width: 0, height: 0, opacity: 0, position: 'absolute', top: '-1000px' }}
               id="file-input"
               onChange={(e) => {
                 field.onChange(e);

@@ -6,10 +6,13 @@ import { themeSettings } from 'constants/theme';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import AdminDashboard from 'scenes/AdminDashboard';
 import Layout from 'scenes/Layout';
 import Login from 'scenes/Login';
 import Products from 'scenes/Products';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -28,6 +31,19 @@ function App() {
             </Route>
           </Route>
         </Routes>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </ThemeProvider>
     </div>
   );

@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { setLogin } from 'state/globalSlice';
 
 Login.propTypes = {};

@@ -1,18 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  LightModeOutlined,
-  DarkModeOutlined,
-  Menu as MenuIcon,
-  Search,
-  SettingsOutlined,
-  ArrowDropDownOutlined,
-} from '@mui/icons-material';
+import { DarkModeOutlined, LightModeOutlined, Menu as MenuIcon, Search, SettingsOutlined } from '@mui/icons-material';
+import { AppBar, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
 import FlexBetween from 'components/FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from 'state/globalSlice';
-import profile from 'assets/img/profile.jpg';
-import { AppBar, Icon, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
 NavBar.propTypes = {};
 
 function NavBar({ isSidebarOpen, setIsSidebarOpen }) {

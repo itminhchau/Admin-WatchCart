@@ -14,11 +14,11 @@ AddProductForm.propTypes = {
 
 function AddProductForm({ onSubmit, listCategorize }) {
   const [checkReset, setCheckReset] = useState(false);
-
   const schema = yup
     .object({
       nameProduct: yup.string().required('please enter values'),
       image: yup.string().required('please enter values'),
+      description: yup.string().required('please enter values'),
       gender: yup.string().required('please enter values'),
       size: yup.number().positive('please enter number positive').required('please enter values'),
       count: yup.number().positive('please enter number positive').required('please enter values'),
@@ -34,15 +34,16 @@ function AddProductForm({ onSubmit, listCategorize }) {
       image: '',
       gender: '',
       size: '',
+      description: '',
       count: '',
       idCategorize: '',
     },
     resolver: yupResolver(schema),
   });
   const handleSubmit = (values) => {
+    setCheckReset(!checkReset);
     onSubmit(values);
     form.reset();
-    setCheckReset(!checkReset);
   };
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
@@ -53,6 +54,8 @@ function AddProductForm({ onSubmit, listCategorize }) {
           <InputField name="count" label="count" form={form} />
           <InputField name="size" label="size" form={form} />
           <InputField name="gender" label="gender" form={form} />
+          <InputField name="description" label="description" form={form} />
+
           <InputFieldDropdown name="idCategorize" label="Categorize" form={form} listCategorize={listCategorize} />
         </Grid>
         {/* <Grid item xs={2} sx={{ margin: '0px 10px' }}>

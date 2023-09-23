@@ -1,8 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import {
+  AdminPanelSettingsOutlined,
+  CalendarMonthOutlined,
+  ChevronLeft,
+  ChevronRightOutlined,
+  Groups2Outlined,
+  HomeOutlined,
+  PieChartOutlined,
+  PointOfSaleOutlined,
+  PublicOutlined,
+  ReceiptLongOutlined,
+  ShoppingCartOutlined,
+  TodayOutlined,
+  TrendingUpOutlined,
+} from '@mui/icons-material';
 import {
   Box,
-  Divider,
   Drawer,
   IconButton,
   List,
@@ -11,28 +23,11 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  useThem,
   useTheme,
 } from '@mui/material';
-import {
-  SettingsOutlined,
-  ChevronLeft,
-  ChevronRightOutlined,
-  HomeOutlined,
-  ShoppingCartOutlined,
-  Groups2Outlined,
-  ReceiptLongOutlined,
-  PublicOutlined,
-  PointOfSaleOutlined,
-  TodayOutlined,
-  CalendarMonthOutlined,
-  AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
-  PieChartOutlined,
-} from '@mui/icons-material';
-import profileImage from 'assets/img/profile.jpg';
-import { Link, redirect, useLocation, useMatch, useNavigate } from 'react-router-dom';
 import FlexBetween from 'components/FlexBetween';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
   {

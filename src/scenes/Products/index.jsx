@@ -1,8 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Box } from '@mui/material';
 import CreateProduct from './components/CreateProduct';
 import ViewProduct from './components/ViewProduct';
-import { Box } from '@mui/material';
 
 Products.propTypes = {};
 
