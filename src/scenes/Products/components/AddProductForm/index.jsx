@@ -12,7 +12,7 @@ AddProductForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-function AddProductForm({ onSubmit, listCategorize }) {
+function AddProductForm({ onSubmit, listCategorize, listSize }) {
   const [checkReset, setCheckReset] = useState(false);
   const schema = yup
     .object({
@@ -20,7 +20,7 @@ function AddProductForm({ onSubmit, listCategorize }) {
       image: yup.string().required('please enter values'),
       description: yup.string().required('please enter values'),
       gender: yup.string().required('please enter values'),
-      size: yup.number().positive('please enter number positive').required('please enter values'),
+      size: yup.string().required('please enter values'),
       count: yup.number().positive('please enter number positive').required('please enter values'),
       price: yup.number().positive('please enter number positive').required('please enter values'),
       idCategorize: yup.string().required('please enter values'),
@@ -52,11 +52,11 @@ function AddProductForm({ onSubmit, listCategorize }) {
           <InputField name="nameProduct" label="nameProduct" form={form} />
           <InputField name="price" label="price" form={form} />
           <InputField name="count" label="count" form={form} />
-          <InputField name="size" label="size" form={form} />
+          <InputFieldDropdown name="size" label="size" form={form} list={listSize} />
           <InputField name="gender" label="gender" form={form} />
           <InputField name="description" label="description" form={form} />
 
-          <InputFieldDropdown name="idCategorize" label="Categorize" form={form} listCategorize={listCategorize} />
+          <InputFieldDropdown name="idCategorize" label="Categorize" form={form} list={listCategorize} />
         </Grid>
         {/* <Grid item xs={2} sx={{ margin: '0px 10px' }}>
          

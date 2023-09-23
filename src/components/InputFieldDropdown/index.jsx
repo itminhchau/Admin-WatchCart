@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 
 InputFieldDropdown.propTypes = {};
 
-function InputFieldDropdown({ form, name, label, listCategorize }) {
+function InputFieldDropdown({ form, name, label, list }) {
   return (
     <Controller
       name={name}
@@ -20,10 +20,10 @@ function InputFieldDropdown({ form, name, label, listCategorize }) {
             error={invalid}
             helperText={error?.message}
           >
-            {listCategorize &&
-              listCategorize.map((option) => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.nameCategorize}
+            {list &&
+              list.map((option) => (
+                <MenuItem key={option.id} value={option.value}>
+                  {option.name}
                 </MenuItem>
               ))}
           </TextField>
