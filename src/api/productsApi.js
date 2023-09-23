@@ -10,7 +10,7 @@ const productsApi = {
     return axiosClient.get(url);
   },
   createProduct(data) {
-    const url = '';
+    const url = '/api/v1/create/product';
     return axiosClient.post(url, data);
   },
   updateProduct(data) {

@@ -8,6 +8,7 @@ CreateProduct.propTypes = {};
 
 function CreateProduct(props) {
   const [listCategorize, setListCategorize] = useState([]);
+  console.log('listCategorize:', listCategorize);
   const handleSubmit = (values) => {
     console.log(values);
   };

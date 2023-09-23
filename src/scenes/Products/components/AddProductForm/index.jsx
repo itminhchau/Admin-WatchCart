@@ -17,8 +17,9 @@ function AddProductForm({ onSubmit, listCategorize }) {
 
   const schema = yup
     .object({
-      name: yup.string().required('please enter values'),
+      nameProduct: yup.string().required('please enter values'),
       image: yup.string().required('please enter values'),
+      gender: yup.string().required('please enter values'),
       size: yup.number().positive('please enter number positive').required('please enter values'),
       count: yup.number().positive('please enter number positive').required('please enter values'),
       price: yup.number().positive('please enter number positive').required('please enter values'),
@@ -28,9 +29,10 @@ function AddProductForm({ onSubmit, listCategorize }) {
 
   const form = useForm({
     defaultValues: {
-      name: '',
+      nameProduct: '',
       price: '',
       image: '',
+      gender: '',
       size: '',
       count: '',
       idCategorize: '',
@@ -46,10 +48,11 @@ function AddProductForm({ onSubmit, listCategorize }) {
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <InputField name="name" label="name" form={form} />
+          <InputField name="nameProduct" label="nameProduct" form={form} />
           <InputField name="price" label="price" form={form} />
           <InputField name="count" label="count" form={form} />
           <InputField name="size" label="size" form={form} />
+          <InputField name="gender" label="gender" form={form} />
           <InputFieldDropdown name="idCategorize" label="Categorize" form={form} listCategorize={listCategorize} />
         </Grid>
         {/* <Grid item xs={2} sx={{ margin: '0px 10px' }}>

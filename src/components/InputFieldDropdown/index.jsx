@@ -22,11 +22,12 @@ function InputFieldDropdown({ form, name, label, listCategorize }) {
             error={invalid}
             helperText={error?.message}
           >
-            {listCategorize?.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.nameCategorize}
-              </MenuItem>
-            ))}
+            {listCategorize &&
+              listCategorize.map((option) => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.nameCategorize}
+                </MenuItem>
+              ))}
           </TextField>
         );
       }}
