@@ -2,9 +2,11 @@ import { Box, Typography } from '@mui/material';
 import CategorizeApi from 'api/categorizeApi';
 import productsApi from 'api/productsApi';
 import sizeApi from 'api/sizeApi';
-import { useMemo } from 'react';
-import { useEffect, useState } from 'react';
+import { getDownloadURL, ref, uploadString } from 'firebase/storage';
+import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
+import { imageDb } from 'storage/firseBase/config';
+import { v4 } from 'uuid';
 import AddProductForm from './AddProductForm';
 
 CreateProduct.propTypes = {};
@@ -14,10 +16,25 @@ function CreateProduct(props) {
   const [listSize, setListSize] = useState([]);
 
   const handleSubmit = async (values) => {
-    console.log('check value form', values);
+    // const storage = getStorage();
+    const storageRef = ref(imageDb, `files/${v4()}`);
+
+    const urlImagePromise = uploadString(storageRef, values.image, 'data_url')
+      .then((snapshot) => {
+        console.log('Image uploaded successfully');
+        // Get the download URL of the uploaded image
+        return getDownloadURL(snapshot.ref);
+      })
+      .catch((error) => {
+        console.error('Error uploading image:', error);
+        throw error;
+      });
+    const urlImage = await urlImagePromise;
+
     const newValue = {
       ...values,
       idCategorize: parseInt(values.idCategorize),
+      image: urlImage,
     };
     const res = await productsApi.createProduct(newValue);
     if (res && res.data.errCode === 0) {

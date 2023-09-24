@@ -45,6 +45,7 @@ function AddProductForm({ onSubmit, listCategorize, listSize }) {
     onSubmit(values);
     form.reset();
   };
+
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       <Grid container spacing={2}>
