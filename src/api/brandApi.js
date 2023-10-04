@@ -1,10 +1,10 @@
 import axiosClient from './axiosClient';
 
-const CategorizeApi = {
+const brandApi = {
   getAll() {
-    const url = '/api/v1/get/categorize';
+    const url = '/api/v1/getall/brand';
     return axiosClient.get(url);
   },
 };
 
-export default CategorizeApi;
+export default brandApi;

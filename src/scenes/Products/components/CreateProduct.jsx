@@ -1,8 +1,10 @@
 import { Box, Typography } from '@mui/material';
-import CategorizeApi from 'api/categorizeApi';
+import brandApi from 'api/brandApi';
 import productsApi from 'api/productsApi';
-import sizeApi from 'api/sizeApi';
+
+import { reRenderContext } from 'context/reRenderContext';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
+import { useContext } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import { imageDb } from 'storage/firseBase/config';
@@ -12,11 +14,9 @@ import AddProductForm from './AddProductForm';
 CreateProduct.propTypes = {};
 
 function CreateProduct(props) {
-  const [listBrand, setListBrand] = useState([
-    { id: 1, value: 1, name: 'app' },
-    { id: 2, value: 2, name: 'app' },
-    { id: 3, value: 3, name: 'app' },
-  ]);
+  const [listBrand, setListBrand] = useState([]);
+  const context = useContext(reRenderContext);
+  const { toggleRerender } = context;
 
   const handleSubmit = async (values) => {
     console.log('check value form', values);
@@ -35,36 +35,37 @@ function CreateProduct(props) {
     //   });
     // const urlImage = await urlImagePromise;
 
-    // const res = await productsApi.createProduct(values);
-    // if (res && res.data.errCode === 0) {
-    //   toast.success('create product success');
-    // } else {
-    //   toast.error('create product false');
-    // }
+    const res = await productsApi.createProduct(values);
+    if (res && res.data.errCode === 0) {
+      toast.success('create product success');
+      toggleRerender();
+    } else {
+      toast.error('create product false');
+    }
   };
 
   useEffect(() => {
-    // (async () => {
-    //   let res = await CategorizeApi.getAll();
-    //   setListCategorize(res.data.data);
-    // })();
+    (async () => {
+      let res = await brandApi.getAll();
+      setListBrand(res.data.data);
+    })();
   }, []);
 
-  // const newListCategory = useMemo(() => {
-  //   const data = listCategorize.map((item) => {
-  //     return {
-  //       id: item.id,
-  //       value: item.id,
-  //       name: item.nameCategorize,
-  //     };
-  //   });
-  //   return data;
-  // }, [listCategorize]);
+  const newListBrand = useMemo(() => {
+    const data = listBrand.map((item) => {
+      return {
+        id: item.id,
+        value: item.id,
+        name: item.nameBrand,
+      };
+    });
+    return data;
+  }, [listBrand]);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       <Typography variant="h2">Add Product</Typography>
-      <AddProductForm onSubmit={handleSubmit} listBrand={listBrand} />
+      <AddProductForm onSubmit={handleSubmit} listBrand={newListBrand} />
     </Box>
   );
 }

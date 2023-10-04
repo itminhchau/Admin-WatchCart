@@ -18,6 +18,7 @@ function AddProductForm({ onSubmit, listBrand }) {
   const schema = yup
     .object({
       nameProduct: yup.string().required('please enter values'),
+      shortDescription: yup.string().required('please enter values'),
       description: yup.string().required('please enter values'),
       rate: yup.number().positive('please enter number positive').required('please enter values'),
       price: yup.number().positive('please enter number positive').required('please enter values'),
@@ -28,9 +29,9 @@ function AddProductForm({ onSubmit, listBrand }) {
   const form = useForm({
     defaultValues: {
       nameProduct: '',
+      shortDescription: '',
       price: '',
       markDownContent: '',
-      count: '',
       idBrand: '',
       rate: '',
     },
@@ -50,6 +51,7 @@ function AddProductForm({ onSubmit, listBrand }) {
           <InputField name="nameProduct" label="nameProduct" form={form} />
           <InputField name="price" label="price" form={form} />
           <InputField name="rate" label="rate" form={form} />
+          <InputField name="shortDescription" label="shortDescription" form={form} />
           <InputFieldDropdown name="idBrand" label="Brand" form={form} list={listBrand} />
         </Grid>
       </Grid>

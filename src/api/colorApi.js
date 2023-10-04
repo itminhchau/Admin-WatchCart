@@ -2,7 +2,7 @@ import axiosClient from './axiosClient';
 
 const colorApi = {
   getAll() {
-    const url = '';
+    const url = '/api/v1/get/colors';
     return axiosClient.get(url);
   },
   getColor(id) {

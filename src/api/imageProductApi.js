@@ -1,26 +1,26 @@
 import axiosClient from './axiosClient';
 
-const productsApi = {
+const imageProductApi = {
   getAll() {
-    const url = '/api/v1/get/products';
+    const url = '/api/v1/get/colors';
     return axiosClient.get(url);
   },
-  getProduct(id) {
+  getImageProduct(id) {
     const url = `/xxxx/${id}`;
     return axiosClient.get(url);
   },
-  createProduct(data) {
-    const url = '/api/v1/create/product';
+  createImageProduct(data) {
+    const url = '/api/v1/create/image-product';
     return axiosClient.post(url, data);
   },
-  updateProduct(data) {
+  updateImageProduct(data) {
     const url = `/xxx/${data.id}`;
     return axiosClient.put(url, data);
   },
-  deleteProduct(id) {
+  deleteImageProduct(id) {
     const url = `/xxx/${id}`;
     return axiosClient.delete(url);
   },
 };
 
-export default productsApi;
+export default imageProductApi;

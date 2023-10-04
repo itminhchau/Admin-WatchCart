@@ -4,16 +4,22 @@ import AddColorProductForm from './AddColorProductForm';
 import { Box, Typography } from '@mui/material';
 import colorApi from 'api/colorApi';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { reRenderContext } from 'context/reRenderContext';
 
 CreateColorProduct.propTypes = {};
 
 function CreateColorProduct(props) {
+  const context = useContext(reRenderContext);
+  const { toggleRerender } = context;
+  console.log('check context', context);
   const handleSubmit = async (values) => {
     try {
       let res = await colorApi.createColor(values);
       console.log('🚀 ~ file: CreateColorProduct.jsx:13 ~ handleSubmit ~ res:', res);
       if (res.data.errCode === 0) {
         toast.success('create color success');
+        toggleRerender();
       }
     } catch (error) {
       console.log(error);

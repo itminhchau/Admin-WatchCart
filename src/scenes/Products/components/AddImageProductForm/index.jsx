@@ -14,15 +14,16 @@ AddImageProductForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-function AddImageProductForm({ onSubmit, listCategorize, listSize }) {
+function AddImageProductForm({ onSubmit, newListProduct, newListColor }) {
   const [checkReset, setCheckReset] = useState(false);
   const schema = yup
     .object({
       // arrayImageDetail: yup.array(),
       image: yup.string().required('please enter values'),
       imageProduct: yup.string().required('please enter values'),
-      typeImage: yup.string().required('please enter values'),
+      idColor: yup.number().positive('please enter number positive').required('please enter values'),
       idProduct: yup.number().positive('please enter number positive').required('please enter values'),
+      stock: yup.number().positive('please enter number positive').required('please enter values'),
     })
     .required();
 
@@ -31,8 +32,9 @@ function AddImageProductForm({ onSubmit, listCategorize, listSize }) {
       // arrayImageDetail: '',
       image: '',
       imageProduct: '',
-      typeImage: '',
+      idColor: '',
       idProduct: '',
+      stock: '',
     },
     resolver: yupResolver(schema),
   });
@@ -50,10 +52,13 @@ function AddImageProductForm({ onSubmit, listCategorize, listSize }) {
           <InputFieldMultipleImage name="detailImage" label="DetailImageProduct" form={form} checkReset={checkReset} />
         </Grid> */}
         <Grid item xs={12} sm={6} md={4} lg={3}>
-          <InputField name="idProduct" label="idProduct" form={form} />
+          <InputFieldDropdown name="idProduct" label="idProduct" form={form} list={newListProduct} />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3}>
-          <InputField name="typeImage" label="typeImage" form={form} />
+          <InputFieldDropdown name="idColor" label="idColor" form={form} list={newListColor} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
+          <InputField name="stock" label="stock" form={form} />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <InputFieldImage name="imageProduct" label="imageProduct" form={form} checkReset={checkReset} />
