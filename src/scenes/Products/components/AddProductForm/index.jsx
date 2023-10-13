@@ -20,6 +20,7 @@ function AddProductForm({ onSubmit, listBrand }) {
       nameProduct: yup.string().required('please enter values'),
       shortDescription: yup.string().required('please enter values'),
       description: yup.string().required('please enter values'),
+      quantitySold: yup.number().positive('please enter number positive').required('please enter values'),
       rate: yup.number().positive('please enter number positive').required('please enter values'),
       price: yup.number().positive('please enter number positive').required('please enter values'),
       idBrand: yup.number().positive('please enter number positive').required('please enter values'),
@@ -30,6 +31,7 @@ function AddProductForm({ onSubmit, listBrand }) {
     defaultValues: {
       nameProduct: '',
       shortDescription: '',
+      quantitySold: '',
       price: '',
       markDownContent: '',
       idBrand: '',
@@ -51,6 +53,7 @@ function AddProductForm({ onSubmit, listBrand }) {
           <InputField name="nameProduct" label="nameProduct" form={form} />
           <InputField name="price" label="price" form={form} />
           <InputField name="rate" label="rate" form={form} />
+          <InputField name="quantitySold" label="quantitySold" form={form} />
           <InputField name="shortDescription" label="shortDescription" form={form} />
           <InputFieldDropdown name="idBrand" label="Brand" form={form} list={listBrand} />
         </Grid>
