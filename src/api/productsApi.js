@@ -2,7 +2,7 @@ import axiosClient from './axiosClient';
 
 const productsApi = {
   getAll() {
-    const url = '/api/v1/get/products';
+    const url = '/api/v1/get-new/product';
     return axiosClient.get(url);
   },
   getProduct(id) {

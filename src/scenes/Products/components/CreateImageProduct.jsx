@@ -25,7 +25,6 @@ function CreateImageProduct(props) {
   const { checkRender } = context;
 
   const handleSubmit = async (values) => {
-    console.log('check value', values);
     // const arrayImage = values.arrayImageDetail;
     // const tempArrImgFirebase = [];
     // setIsLoading(true);
@@ -54,12 +53,10 @@ function CreateImageProduct(props) {
 
     const urlImagePromise = uploadString(storageRef, values.image, 'data_url')
       .then((snapshot) => {
-        console.log('Image uploaded successfully');
         // Get the download URL of the uploaded image
         return getDownloadURL(snapshot.ref);
       })
       .catch((error) => {
-        console.error('Error uploading image:', error);
         throw error;
       });
     const urlImage = await urlImagePromise;
@@ -71,9 +68,7 @@ function CreateImageProduct(props) {
       };
       delete newValue.image;
       delete newValue.imageProduct;
-      console.log('check new value: ', newValue);
       try {
-        console.log('after new value');
         let res = await imageProductApi.createImageProduct(newValue);
         if (res.data.errCode === 0) {
           toast.success('create color success');
@@ -89,7 +84,6 @@ function CreateImageProduct(props) {
     (async () => {
       let res = await productsApi.getAll();
       setListProduct(res.data.data);
-      console.log('res product', res);
     })();
   }, [checkRender]);
 
@@ -100,18 +94,15 @@ function CreateImageProduct(props) {
         value: item.id,
         name: item.nameProduct,
       };
-
       return newdata;
     });
-
-    return data.reverse();
+    return data;
   }, [listProduct]);
 
   useEffect(() => {
     (async () => {
       let res = await colorApi.getAll();
       setListColor(res.data.data);
-      console.log('res product', res);
     })();
   }, [checkRender]);
 
@@ -126,7 +117,7 @@ function CreateImageProduct(props) {
       return newdata;
     });
 
-    return data.reverse();
+    return data;
   }, [listColor]);
 
   return (

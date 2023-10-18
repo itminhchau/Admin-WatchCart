@@ -11,7 +11,6 @@ function InputFieldImage({ name, label, form, checkReset }) {
   const handleFileChange = async (event) => {
     const file = event.target.files;
     const data = file[0];
-    console.log(data);
     setNameImg(data.name.toString());
     // const imgeRef = ref(imageDb, `files/${v4()}`);
     let imageBase64 = await toBase64(data);

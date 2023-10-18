@@ -19,7 +19,6 @@ function CreateProduct(props) {
   const { toggleRerender } = context;
 
   const handleSubmit = async (values) => {
-    console.log('check value form', values);
     // const storage = getStorage();
     // const storageRef = ref(imageDb, `files/${v4()}`);
 

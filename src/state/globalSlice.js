@@ -13,7 +13,7 @@ export const globalSlice = createSlice({
       state.mode = state.mode === 'light' ? 'dark' : 'light';
     },
     setLogin: (state) => {
-      state.isLogin = !state.isLogin;
+      state.isLogin = true;
     },
   },
 });

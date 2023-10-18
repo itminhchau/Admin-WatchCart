@@ -11,6 +11,9 @@ function Login(props) {
 
   const handleLogin = () => {
     dispatch(setLogin());
+
+    console.log('da click');
+    console.log(location);
     if (location.state?.from) {
       navigate(location.state.from);
     }
