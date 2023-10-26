@@ -13,6 +13,7 @@ import Login from 'scenes/Login';
 import Products from 'scenes/Products';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Customers from 'scenes/Customers';
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -28,6 +29,7 @@ function App() {
               <Route path="/" element={<Navigate to="dashboard" />} />
               <Route path="/dashboard" element={<AdminDashboard />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/customers" element={<Customers />} />
             </Route>
           </Route>
         </Routes>

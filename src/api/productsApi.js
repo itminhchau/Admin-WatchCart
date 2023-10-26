@@ -1,12 +1,14 @@
 import axiosClient from './axiosClient';
 
 const productsApi = {
-  getAll() {
-    const url = '/api/v1/get-new/product';
-    return axiosClient.get(url);
+  getAll(params) {
+    const url = '/api/v1/get/filter/all/product';
+    return axiosClient.get(url, {
+      params: params,
+    });
   },
   getProduct(id) {
-    const url = `/xxxx/${id}`;
+    const url = `/api/v1/get-single/product/${id}`;
     return axiosClient.get(url);
   },
   createProduct(data) {
@@ -14,11 +16,11 @@ const productsApi = {
     return axiosClient.post(url, data);
   },
   updateProduct(data) {
-    const url = `/xxx/${data.id}`;
+    const url = `/api/v1/update/product`;
     return axiosClient.put(url, data);
   },
   deleteProduct(id) {
-    const url = `/xxx/${id}`;
+    const url = `/api/v1/delete/product/${id}`;
     return axiosClient.delete(url);
   },
 };
