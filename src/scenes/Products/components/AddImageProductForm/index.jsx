@@ -44,7 +44,7 @@ function AddImageProductForm({ onSubmit, newListProduct, newListColor }) {
     form.reset();
   };
 
-  console.log(form.formState.errors);
+  // console.log(form.formState.errors);
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       <Grid container spacing={2}>

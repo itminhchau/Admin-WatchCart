@@ -13,7 +13,7 @@ AddProductForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-function AddProductForm({ onSubmit, listBrand }) {
+function AddProductForm({ onSubmit, listBrand, listPromotion }) {
   const [checkReset, setCheckReset] = useState(false);
   const schema = yup
     .object({
@@ -21,10 +21,10 @@ function AddProductForm({ onSubmit, listBrand }) {
       shortDescription: yup.string().required('please enter values'),
       description: yup.string().required('please enter values'),
       quantitySold: yup.number().positive('please enter number positive').required('please enter values'),
-      totalStock: yup.number().positive('please enter number positive').required('please enter values'),
       rate: yup.number().positive('please enter number positive').required('please enter values'),
       price: yup.number().positive('please enter number positive').required('please enter values'),
       idBrand: yup.number().positive('please enter number positive').required('please enter values'),
+      idPromotion: yup.number().positive('please enter number positive').required('please enter values'),
     })
     .required();
 
@@ -33,11 +33,11 @@ function AddProductForm({ onSubmit, listBrand }) {
       nameProduct: '',
       shortDescription: '',
       quantitySold: '',
-      totalStock: '',
       price: '',
       markDownContent: '',
       idBrand: '',
       rate: '',
+      idPromotion: '',
     },
     resolver: yupResolver(schema),
   });
@@ -47,7 +47,7 @@ function AddProductForm({ onSubmit, listBrand }) {
     form.reset();
   };
 
-  console.log(form.formState.errors);
+  // console.log(form.formState.errors);
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       <Grid container spacing={2}>
@@ -56,9 +56,9 @@ function AddProductForm({ onSubmit, listBrand }) {
           <InputField name="price" label="price" form={form} />
           <InputField name="rate" label="rate" form={form} />
           <InputField name="quantitySold" label="quantitySold" form={form} />
-          <InputField name="totalStock" label="totalStock" form={form} />
           <InputField name="shortDescription" label="shortDescription" form={form} />
           <InputFieldDropdown name="idBrand" label="Brand" form={form} list={listBrand} />
+          <InputFieldDropdown name="idPromotion" label="Promotion" form={form} list={listPromotion} />
         </Grid>
       </Grid>
       <InputFieldMarkDown name="markDownContent" label="markDownContent" form={form} />

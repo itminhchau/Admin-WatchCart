@@ -20,7 +20,10 @@ function CreateImageProduct(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [listProduct, setListProduct] = useState([]);
   const [listColor, setListColor] = useState([]);
-
+  const [filter, setFilter] = useState({
+    page: 1,
+    limit: 30,
+  });
   const context = useContext(reRenderContext);
   const { checkRender } = context;
 
@@ -82,10 +85,10 @@ function CreateImageProduct(props) {
 
   useEffect(() => {
     (async () => {
-      let res = await productsApi.getAll();
+      let res = await productsApi.getAll(filter);
       setListProduct(res.data.data);
     })();
-  }, [checkRender]);
+  }, [checkRender, filter]);
 
   const newListProduct = useMemo(() => {
     const data = listProduct?.map((item) => {
@@ -96,7 +99,7 @@ function CreateImageProduct(props) {
       };
       return newdata;
     });
-    return data;
+    return data.reverse();
   }, [listProduct]);
 
   useEffect(() => {
