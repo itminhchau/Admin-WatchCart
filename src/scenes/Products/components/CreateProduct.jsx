@@ -10,11 +10,13 @@ import { toast } from 'react-toastify';
 import { imageDb } from 'storage/firseBase/config';
 import { v4 } from 'uuid';
 import AddProductForm from './AddProductForm';
+import promotionApi from 'api/promotionApi';
 
 CreateProduct.propTypes = {};
 
 function CreateProduct(props) {
   const [listBrand, setListBrand] = useState([]);
+  const [listPromotion, setListPromotion] = useState([]);
   const context = useContext(reRenderContext);
   const { toggleRerender } = context;
 
@@ -42,7 +44,23 @@ function CreateProduct(props) {
       toast.error('create product false');
     }
   };
-
+  useEffect(() => {
+    (async () => {
+      let res = await promotionApi.getAll();
+      setListPromotion(res.data.data);
+    })();
+  }, []);
+  const newListPromotion = useMemo(() => {
+    const data = listPromotion.map((item) => {
+      return {
+        id: item.id,
+        value: item.id,
+        name: item.description,
+        // expDate: item.expDate,
+      };
+    });
+    return data;
+  }, [listPromotion]);
   useEffect(() => {
     (async () => {
       let res = await brandApi.getAll();
@@ -64,7 +82,7 @@ function CreateProduct(props) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       <Typography variant="h2">Add Product</Typography>
-      <AddProductForm onSubmit={handleSubmit} listBrand={newListBrand} />
+      <AddProductForm onSubmit={handleSubmit} listBrand={newListBrand} listPromotion={newListPromotion} />
     </Box>
   );
 }

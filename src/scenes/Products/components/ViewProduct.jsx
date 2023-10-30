@@ -76,6 +76,7 @@ function ViewProduct(props) {
   const handleCheckEdit = () => {
     setCheckEdit(!checkEdit);
   };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px', margin: '16px 0' }}>
       <Typography variant="h2">View Product</Typography>
@@ -109,6 +110,8 @@ function ViewProduct(props) {
               <TableRow>
                 <TableCell>Id</TableCell>
                 <TableCell>idBrand</TableCell>
+                <TableCell>idPromotion</TableCell>
+                <TableCell>promotion</TableCell>
                 <TableCell>nameProduct</TableCell>
                 <TableCell>price</TableCell>
                 <TableCell>quantitySold</TableCell>
@@ -123,9 +126,11 @@ function ViewProduct(props) {
                   <TableRow key={item.id}>
                     <TableCell>{item.id}</TableCell>
                     <TableCell>{item.idBrand}</TableCell>
+                    <TableCell>{item.idPromotion}</TableCell>
+                    <TableCell>{item.promotion?.description}</TableCell>
                     <TableCell>{item.nameProduct}</TableCell>
                     <TableCell>{item.price}</TableCell>
-                    <TableCell>{item.quantitySold === null ? 0 : item.quantitySold}</TableCell>
+                    <TableCell>{item.quantitySold}</TableCell>
                     <TableCell>{item.rate}</TableCell>
                     <TableCell>
                       <Button variant="contained" onClick={() => editModalShow(item)}>

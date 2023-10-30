@@ -12,9 +12,11 @@ import {
 import customersApi from 'api/customersApi';
 import React from 'react';
 import { useEffect, useState } from 'react';
+
 let listProduct = [];
 const ViewCustomer = () => {
   const [listCustomer, setListCustomer] = useState([]);
+
   useEffect(() => {
     (async () => {
       const res = await customersApi.getAll();
@@ -22,7 +24,6 @@ const ViewCustomer = () => {
       setListCustomer(res.data.data);
     })();
   }, []);
-
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px', margin: '16px 0' }}>
       <Typography variant="h2">View Customers</Typography>

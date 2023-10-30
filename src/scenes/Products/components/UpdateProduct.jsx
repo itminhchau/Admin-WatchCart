@@ -14,6 +14,7 @@ const UpdateProduct = ({ itemProduct, openEdit, handleClose, handleCheckEdit }) 
 
   const handleSubmit = async () => {
     const res = await productsApi.updateProduct(inputEdit);
+    console.log(res, 'res product');
     if (res && res?.data?.errCode === 0) {
       toast.success('update product success');
       handleClose();
@@ -53,6 +54,17 @@ const UpdateProduct = ({ itemProduct, openEdit, handleClose, handleCheckEdit }) 
                       </Grid>
                       <Grid xs={12} item>
                         <TextField
+                          name="idPromotion"
+                          // type="number"
+                          label="idPromotion	"
+                          variant="outlined"
+                          fullWidth
+                          value={inputEdit?.idPromotion}
+                          onChange={handleChangeProduct}
+                        />
+                      </Grid>
+                      <Grid xs={12} item>
+                        <TextField
                           name="nameProduct"
                           label="nameProduct"
                           variant="outlined"
@@ -65,11 +77,11 @@ const UpdateProduct = ({ itemProduct, openEdit, handleClose, handleCheckEdit }) 
                         <TextField
                           type="number"
                           label="price"
+                          name="price"
                           variant="outlined"
                           fullWidth
                           value={inputEdit?.price}
                           onChange={handleChangeProduct}
-                          name="price"
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -78,7 +90,7 @@ const UpdateProduct = ({ itemProduct, openEdit, handleClose, handleCheckEdit }) 
                           label="quantitySold"
                           variant="outlined"
                           fullWidth
-                          value={inputEdit?.quantitySold === null ? 0 : inputEdit?.quantitySold}
+                          value={inputEdit?.quantitySold || 0}
                           onChange={handleChangeProduct}
                           name="quantitySold"
                         />

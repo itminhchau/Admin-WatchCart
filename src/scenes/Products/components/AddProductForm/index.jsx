@@ -13,7 +13,7 @@ AddProductForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-function AddProductForm({ onSubmit, listBrand }) {
+function AddProductForm({ onSubmit, listBrand, listPromotion }) {
   const [checkReset, setCheckReset] = useState(false);
   const schema = yup
     .object({
@@ -24,6 +24,7 @@ function AddProductForm({ onSubmit, listBrand }) {
       rate: yup.number().positive('please enter number positive').required('please enter values'),
       price: yup.number().positive('please enter number positive').required('please enter values'),
       idBrand: yup.number().positive('please enter number positive').required('please enter values'),
+      idPromotion: yup.number().positive('please enter number positive').required('please enter values'),
     })
     .required();
 
@@ -36,6 +37,7 @@ function AddProductForm({ onSubmit, listBrand }) {
       markDownContent: '',
       idBrand: '',
       rate: '',
+      idPromotion: '',
     },
     resolver: yupResolver(schema),
   });
@@ -56,6 +58,7 @@ function AddProductForm({ onSubmit, listBrand }) {
           <InputField name="quantitySold" label="quantitySold" form={form} />
           <InputField name="shortDescription" label="shortDescription" form={form} />
           <InputFieldDropdown name="idBrand" label="Brand" form={form} list={listBrand} />
+          <InputFieldDropdown name="idPromotion" label="Promotion" form={form} list={listPromotion} />
         </Grid>
       </Grid>
       <InputFieldMarkDown name="markDownContent" label="markDownContent" form={form} />
