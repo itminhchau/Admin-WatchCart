@@ -2,10 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid } from '@mui/material';
 import InputField from 'components/InputField';
 import InputFieldDropdown from 'components/InputFieldDropdown';
-import InputFieldImage from 'components/InputFieldImage';
 import InputFieldMarkDown from 'components/InputFieldMarkDown';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -14,7 +12,6 @@ AddProductForm.propTypes = {
 };
 
 function AddProductForm({ onSubmit, listBrand, listPromotion }) {
-  const [checkReset, setCheckReset] = useState(false);
   const schema = yup
     .object({
       nameProduct: yup.string().required('please enter values'),
@@ -42,12 +39,9 @@ function AddProductForm({ onSubmit, listBrand, listPromotion }) {
     resolver: yupResolver(schema),
   });
   const handleSubmit = (values) => {
-    // setCheckReset(!checkReset);
     onSubmit(values);
     form.reset();
   };
-
-  // console.log(form.formState.errors);
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       <Grid container spacing={2}>

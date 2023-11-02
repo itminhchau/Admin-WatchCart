@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
-import InputField from 'components/InputField';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid } from '@mui/material';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import InputField from 'components/InputField';
 import InputFieldDate from 'components/InputFieldDate';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 AddPromotionForm.propTypes = {};
 
 function AddPromotionForm({ onSubmit }) {

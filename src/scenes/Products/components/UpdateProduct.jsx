@@ -14,7 +14,6 @@ const UpdateProduct = ({ itemProduct, openEdit, handleClose, handleCheckEdit }) 
 
   const handleSubmit = async () => {
     const res = await productsApi.updateProduct(inputEdit);
-    console.log(res, 'res product');
     if (res && res?.data?.errCode === 0) {
       toast.success('update product success');
       handleClose();

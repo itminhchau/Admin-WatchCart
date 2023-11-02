@@ -2,15 +2,11 @@ import { Box, Typography } from '@mui/material';
 import brandApi from 'api/brandApi';
 import productsApi from 'api/productsApi';
 
-import { reRenderContext } from 'context/reRenderContext';
-import { getDownloadURL, ref, uploadString } from 'firebase/storage';
-import { useContext } from 'react';
-import { useEffect, useMemo, useState } from 'react';
-import { toast } from 'react-toastify';
-import { imageDb } from 'storage/firseBase/config';
-import { v4 } from 'uuid';
-import AddProductForm from './AddProductForm';
 import promotionApi from 'api/promotionApi';
+import { reRenderContext } from 'context/reRenderContext';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
+import AddProductForm from './AddProductForm';
 
 CreateProduct.propTypes = {};
 

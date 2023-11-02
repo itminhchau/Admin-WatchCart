@@ -1,11 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AddColorProductForm from './AddColorProductForm';
 import { Box, Typography } from '@mui/material';
 import colorApi from 'api/colorApi';
-import { toast } from 'react-toastify';
-import { useContext } from 'react';
 import { reRenderContext } from 'context/reRenderContext';
+import { useContext } from 'react';
+import { toast } from 'react-toastify';
+import AddColorProductForm from './AddColorProductForm';
 
 CreateColorProduct.propTypes = {};
 

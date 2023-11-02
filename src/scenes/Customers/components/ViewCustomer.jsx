@@ -13,7 +13,6 @@ import customersApi from 'api/customersApi';
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-let listProduct = [];
 const ViewCustomer = () => {
   const [listCustomer, setListCustomer] = useState([]);
 
@@ -58,15 +57,6 @@ const ViewCustomer = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <div className="text-center flex  mt-[20px] ">
-          <Pagination
-            onChange={handleOnChangePage}
-            sx={{ margin: 'auto' }}
-            page={Number.parseInt(filter.page) || 1}
-            count={totalPages || 10}
-            color="primary"
-          />
-        </div> */}
       </Paper>
     </Box>
   );

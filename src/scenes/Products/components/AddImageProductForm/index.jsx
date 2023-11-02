@@ -3,8 +3,6 @@ import { Button, Grid } from '@mui/material';
 import InputField from 'components/InputField';
 import InputFieldDropdown from 'components/InputFieldDropdown';
 import InputFieldImage from 'components/InputFieldImage';
-import InputFieldMarkDown from 'components/InputFieldMarkDown';
-import InputFieldMultipleImage from 'components/InputFieldMultipleImage';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -18,7 +16,6 @@ function AddImageProductForm({ onSubmit, newListProduct, newListColor }) {
   const [checkReset, setCheckReset] = useState(false);
   const schema = yup
     .object({
-      // arrayImageDetail: yup.array(),
       image: yup.string().required('please enter values'),
       imageProduct: yup.string().required('please enter values'),
       idColor: yup.number().positive('please enter number positive').required('please enter values'),
@@ -29,7 +26,6 @@ function AddImageProductForm({ onSubmit, newListProduct, newListColor }) {
 
   const form = useForm({
     defaultValues: {
-      // arrayImageDetail: '',
       image: '',
       imageProduct: '',
       idColor: '',
@@ -44,13 +40,9 @@ function AddImageProductForm({ onSubmit, newListProduct, newListColor }) {
     form.reset();
   };
 
-  // console.log(form.formState.errors);
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
       <Grid container spacing={2}>
-        {/* <Grid item xs={12} sm={6} md={4} lg={3}>
-          <InputFieldMultipleImage name="detailImage" label="DetailImageProduct" form={form} checkReset={checkReset} />
-        </Grid> */}
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <InputFieldDropdown name="idProduct" label="idProduct" form={form} list={newListProduct} />
         </Grid>
