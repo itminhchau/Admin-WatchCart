@@ -4,9 +4,10 @@ import { Navigate, Outlet } from 'react-router-dom';
 ProtectRouter.propTypes = {};
 
 function ProtectRouter(props) {
-  const isLogin = useSelector((state) => state.global.isLogin);
+  const user = useSelector((state) => state.global.current);
+  const loginSuccess = user ? !!user.id : false;
 
-  return isLogin ? <Outlet /> : <Navigate to="/login" replace />;
+  return loginSuccess ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
 export default ProtectRouter;

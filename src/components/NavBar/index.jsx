@@ -1,13 +1,16 @@
 import { DarkModeOutlined, LightModeOutlined, Menu as MenuIcon, Search, SettingsOutlined } from '@mui/icons-material';
-import { AppBar, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
+import { AppBar, Button, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
 import FlexBetween from 'components/FlexBetween';
 import { useDispatch } from 'react-redux';
-import { setMode } from 'state/globalSlice';
+import { logOut, setMode } from 'state/globalSlice';
 NavBar.propTypes = {};
 
 function NavBar({ isSidebarOpen, setIsSidebarOpen }) {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
   return (
     <AppBar
       sx={{
@@ -40,6 +43,9 @@ function NavBar({ isSidebarOpen, setIsSidebarOpen }) {
           </IconButton>
           <IconButton>
             <SettingsOutlined sx={{ fontSize: '25px' }} />
+          </IconButton>
+          <IconButton>
+            <Button onClick={handleLogout}>Logout</Button>
           </IconButton>
         </FlexBetween>
       </Toolbar>
